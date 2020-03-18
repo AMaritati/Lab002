@@ -38,32 +38,44 @@ public class FXMLController {
 
     @FXML
     void doTranslate(ActionEvent event) {
-    	//caso aggiunta parola al dizionario
+    	
+    	
     	String inserimento = txtInsert.getText();
     	String tokens[] = inserimento.split(" ");
-    	
+    	//caso aggiunta parola al dizionario
+    	if (tokens.length == 2) {
+    		
     	if (controllaParola(tokens[0]) == true) {
     		if (controllaParola(tokens[1]) == true) {
     	    	diz.w.add(new Word(tokens[0], tokens[1]));
     	    	txtBig.setText("Parola inserita nel dizionario");
+    	    	txtInsert.clear();
     		}
     		
     	}
     	
-    	
-    	
-    	
-    	
-    	//caso traduzione parola
-    /*	for (Word a : diz.w) {
-    		if (txtInsert.getText().equals(a.getAlienWord())) {
-    			txtBig.setText(a.getTranslation());
-    		}
-    		else {
-    			txtBig.setText("Traduzione non presente");
-    		}
+    	if (controllaParola(tokens[0]) == false  || controllaParola(tokens[1]) == false ) {
+    		txtBig.setText("ERRORE INSERIMENTO PAROLA");
+    		txtInsert.clear();
+    		
+    		return;
     	}
-    	*/
+    }
+    	//caso traduzione parola
+    	else if (tokens.length == 1) {
+    		
+    	    	for (Word a : diz.w) {
+    	    		if (txtInsert.getText().equals(a.getAlienWord())) {
+    	    			txtBig.setText(a.getTranslation());
+    	    		}
+    	    		else {
+    	    			txtBig.setText("Traduzione non presente");
+    	    			txtInsert.clear();
+    	    		}
+    	    	}
+    	    	
+    	}
+    	
     	
     	    	
     
