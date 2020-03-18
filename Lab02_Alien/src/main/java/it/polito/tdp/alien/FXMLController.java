@@ -42,13 +42,13 @@ public class FXMLController {
     	String inserimento = txtInsert.getText();
     	String tokens[] = inserimento.split(" ");
     	
-    	//if (controllaParola(tokens[0]) == true) {
-    	//	if (controllaParola(tokens[1]) == true) {
+    	if (controllaParola(tokens[0]) == true) {
+    		if (controllaParola(tokens[1]) == true) {
     	    	diz.w.add(new Word(tokens[0], tokens[1]));
     	    	txtBig.setText("Parola inserita nel dizionario");
-    		//}
+    		}
     		
-    	//}
+    	}
     	
     	
     	
@@ -65,9 +65,23 @@ public class FXMLController {
     	}
     	*/
     	
-    	
-
+    	    	
+    
     }
+    public boolean controllaParola (String p) {
+		char c;
+		boolean result = true;
+		
+		for(int i=0;i<p.length();i++){
+            c = p.charAt(i);
+            if(!((Character.isLetter(c)))){
+                result = false;
+                return result;
+            }
+        }
+        
+		return result;
+	}
 
    
     @FXML
