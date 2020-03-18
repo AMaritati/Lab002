@@ -21,6 +21,9 @@ public class FXMLController {
 
     @FXML
     private TextField txtInsert;
+    
+    @FXML
+    private TextArea txtElenco;
 
     @FXML
     private Button btnTranslate;
@@ -34,6 +37,11 @@ public class FXMLController {
     @FXML
     void doReset(ActionEvent event) {
 
+    	txtBig.clear();
+    	txtInsert.clear();
+    	txtElenco.clear();
+    	diz.w.clear();
+    	
     }
 
     @FXML
@@ -49,6 +57,7 @@ public class FXMLController {
     		if (controllaParola(tokens[1]) == true) {
     	    	diz.w.add(new Word(tokens[0], tokens[1]));
     	    	txtBig.setText("Parola inserita nel dizionario");
+    	    	txtElenco.appendText(tokens[0].toLowerCase()+ "-"+ tokens[1].toLowerCase()+"\n");
     	    	txtInsert.clear();
     		}
     		
@@ -62,10 +71,10 @@ public class FXMLController {
     	}
     }
     	//caso traduzione parola
-    	else if (tokens.length == 1) {
+    	else {
     		
     	    	for (Word a : diz.w) {
-    	    		if (txtInsert.getText().equals(a.getAlienWord())) {
+    	    		if (txtInsert.getText().toLowerCase().equals(a.getAlienWord())) {
     	    			txtBig.setText(a.getTranslation());
     	    		}
     	    		else {
@@ -74,6 +83,13 @@ public class FXMLController {
     	    		}
     	    	}
     	    	
+    	}
+    	if (tokens.length > 2)
+    	{
+    		txtBig.setText("ERRORE INSERIMENTO, TROPPE VOCI. LIMITARE A DUE");
+    		txtInsert.clear();
+    		
+    		return;
     	}
     	
     	
@@ -94,15 +110,28 @@ public class FXMLController {
         
 		return result;
 	}
+    
+    public boolean controllopresenza (String p) {
+    	boolean result = false;
+    	for (Word w : diz.w) {
+    		if (w.getAlienWord().equals(p)) {
+    			result = true;
+    		}
+    	}
+    	
+    	return result;
+    }
 
    
     @FXML
     void initialize() {
         assert txtInsert != null : "fx:id=\"txtInsert\" was not injected: check your FXML file 'Scene.fxml'.";
+        assert txtElenco != null : "fx:id=\"txtElenco\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnTranslate != null : "fx:id=\"btnTranslate\" was not injected: check your FXML file 'Scene.fxml'.";
         assert txtBig != null : "fx:id=\"txtBig\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
 
+        
         diz = new AlienDictionary();
     }
 }
