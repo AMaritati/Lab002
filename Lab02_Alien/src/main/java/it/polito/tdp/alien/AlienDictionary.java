@@ -6,7 +6,7 @@ public class AlienDictionary {
 	List <Word> w;
 	
 	public AlienDictionary() {
-		w = new ArrayList<Word>();
+		w = new LinkedList<Word>();
 	}
 	
 	public void addWord (String alienWord,String translation) {

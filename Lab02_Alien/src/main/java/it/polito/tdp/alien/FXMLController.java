@@ -42,15 +42,13 @@ public class FXMLController {
     	String inserimento = txtInsert.getText();
     	String tokens[] = inserimento.split(" ");
     	
-    	if (word.controllaParola(tokens[0]) == true) {
-    		if (word.controllaParola(tokens[1]) == true) {
-    			word.setAlienWord(tokens[0]);
-    	    	word.setTranslation(tokens[1]);
-    	    	diz.addWord(word.getAlienWord(), word.getTranslation());
+    	//if (controllaParola(tokens[0]) == true) {
+    	//	if (controllaParola(tokens[1]) == true) {
+    	    	diz.w.add(new Word(tokens[0], tokens[1]));
     	    	txtBig.setText("Parola inserita nel dizionario");
-    		}
+    		//}
     		
-    	}
+    	//}
     	
     	
     	
@@ -61,6 +59,9 @@ public class FXMLController {
     		if (txtInsert.getText().toLowerCase().equals(a.getAlienWord().toLowerCase())) {
     			txtBig.setText(a.getTranslation());
     		}
+    		else {
+    			txtBig.setText("Traduzione non presente");
+    		}
     	}
     	
     	
@@ -68,6 +69,7 @@ public class FXMLController {
 
     }
 
+   
     @FXML
     void initialize() {
         assert txtInsert != null : "fx:id=\"txtInsert\" was not injected: check your FXML file 'Scene.fxml'.";
