@@ -74,13 +74,13 @@ public class FXMLController {
     	else {
     		boolean nonpresente=true;
     	    	for (Word a : diz.w) {
-    	    		if (txtInsert.getText().toLowerCase().equals(a.getAlienWord())) {
+    	    		if (txtInsert.getText().toLowerCase().equals(a.getAlienWord().toLowerCase())) {
     	    			txtBig.setText(a.getTranslation());
     	    			nonpresente=false;
     	    		}
     	    	}
     	    	if(nonpresente)
-    	    		txtBig.setText("fai cacare");
+    	    		txtBig.setText("Non è possibile tradurre");
     	    	
     	}
     	if (tokens.length > 2)
