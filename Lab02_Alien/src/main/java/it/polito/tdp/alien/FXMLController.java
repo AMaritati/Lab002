@@ -72,16 +72,15 @@ public class FXMLController {
     }
     	//caso traduzione parola
     	else {
-    		
+    		boolean nonpresente=true;
     	    	for (Word a : diz.w) {
     	    		if (txtInsert.getText().toLowerCase().equals(a.getAlienWord())) {
     	    			txtBig.setText(a.getTranslation());
-    	    		}
-    	    		else {
-    	    			txtBig.setText("Traduzione non presente");
-    	    			txtInsert.clear();
+    	    			nonpresente=false;
     	    		}
     	    	}
+    	    	if(nonpresente)
+    	    		txtBig.setText("fai cacare");
     	    	
     	}
     	if (tokens.length > 2)
