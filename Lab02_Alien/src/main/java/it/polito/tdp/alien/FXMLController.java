@@ -41,7 +41,7 @@ public class FXMLController {
     	//caso aggiunta parola al dizionario
     	String inserimento = txtInsert.getText();
     	String tokens[] = inserimento.split(" ");
-    	
+    	if(tokens.length==2) {
     	//if (controllaParola(tokens[0]) == true) {
     	//	if (controllaParola(tokens[1]) == true) {
     	    	diz.w.add(new Word(tokens[0], tokens[1]));
@@ -49,13 +49,14 @@ public class FXMLController {
     		//}
     		
     	//}
-    	
+    	}
     	
     	
     	
     	
     	//caso traduzione parola
-    /*	for (Word a : diz.w) {
+    	if(tokens.length==1) {
+    	for (Word a : diz.w) {
     		if (txtInsert.getText().equals(a.getAlienWord())) {
     			txtBig.setText(a.getTranslation());
     		}
@@ -63,7 +64,7 @@ public class FXMLController {
     			txtBig.setText("Traduzione non presente");
     		}
     	}
-    	*/
+    	}
     	
     	
 
