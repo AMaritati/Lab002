@@ -55,15 +55,15 @@ public class FXMLController {
     	
     	
     	//caso traduzione parola
-    	for (Word a : diz.w) {
-    		if (txtInsert.getText().toLowerCase().equals(a.getAlienWord().toLowerCase())) {
+    /*	for (Word a : diz.w) {
+    		if (txtInsert.getText().equals(a.getAlienWord())) {
     			txtBig.setText(a.getTranslation());
     		}
     		else {
     			txtBig.setText("Traduzione non presente");
     		}
     	}
-    	
+    	*/
     	
     	
 
@@ -77,5 +77,6 @@ public class FXMLController {
         assert txtBig != null : "fx:id=\"txtBig\" was not injected: check your FXML file 'Scene.fxml'.";
         assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'Scene.fxml'.";
 
+        diz = new AlienDictionary();
     }
 }

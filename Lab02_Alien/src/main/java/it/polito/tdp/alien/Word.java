@@ -32,6 +32,13 @@ public class Word {
 	public void setTranslation(String translation) {
 		this.translation = translation;
 	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		alienWord.toLowerCase().equals(obj.toString().toLowerCase());
+		return super.equals(obj);
+	}
 	
 	
 	
