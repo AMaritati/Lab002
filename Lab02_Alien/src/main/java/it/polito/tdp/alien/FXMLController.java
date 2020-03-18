@@ -9,6 +9,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXMLController {
+	
+	Word word;
+	AlienDictionary diz;
 
     @FXML
     private ResourceBundle resources;
@@ -35,6 +38,33 @@ public class FXMLController {
 
     @FXML
     void doTranslate(ActionEvent event) {
+    	//caso aggiunta parola al dizionario
+    	String inserimento = txtInsert.getText();
+    	String tokens[] = inserimento.split(" ");
+    	
+    	if (word.controllaParola(tokens[0]) == true) {
+    		if (word.controllaParola(tokens[1]) == true) {
+    			word.setAlienWord(tokens[0]);
+    	    	word.setTranslation(tokens[1]);
+    	    	diz.addWord(word.getAlienWord(), word.getTranslation());
+    	    	txtBig.setText("Parola inserita nel dizionario");
+    		}
+    		
+    	}
+    	
+    	
+    	
+    	
+    	
+    	//caso traduzione parola
+    	for (Word a : diz.w) {
+    		if (txtInsert.getText().toLowerCase().equals(a.getAlienWord().toLowerCase())) {
+    			txtBig.setText(a.getTranslation());
+    		}
+    	}
+    	
+    	
+    	
 
     }
 
