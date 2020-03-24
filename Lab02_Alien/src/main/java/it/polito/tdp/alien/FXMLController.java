@@ -12,6 +12,7 @@ public class FXMLController {
 	
 	Word word;
 	AlienDictionary diz;
+	WordEnhanced we;
 
     @FXML
     private ResourceBundle resources;
@@ -132,5 +133,6 @@ public class FXMLController {
 
         
         diz = new AlienDictionary();
+        
     }
 }
